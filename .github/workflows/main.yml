@@ -1,0 +1,39 @@
+# This workflow will install Python dependencies, run tests and lint with a single version of Python
+# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-python
+
+name: Hi
+
+on:
+  schedule:
+      - cron:  '*/15 * * * *'    # 国际标准时间22点（北京时间早上6点发）
+      
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  push:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v3
+    - name: Run with setup-python 3.9
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.9'
+        update-environment: false
+    - name: Build
+      run: python main.py
+    - name: Commit and push if changed   # 更新README.md
+      run: |
+          git diff
+          git config --global user.email "xiaxiayige@163.com"
+          git config --global user.name "xiaxiayige"
+          git add README.md
+          git commit -m "Github Action Auto Updated"
+          git push
