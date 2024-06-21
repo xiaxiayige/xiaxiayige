@@ -16,13 +16,15 @@ def update_readme():
     second = now.second
 
     # 格式化输出
-    formatted_date = f"{year}-{month}-{day} {hour}:{second}:{second}"
+    formatted_date = f"{year}-{month}-{day}"
 
     readmeText = """
 # Hello , 今天是 {date} , 加油鸭 🤭
     
 ![img]({image})
-    
+
+![img](https://v1.jinrishici.com/all.svg?font-size=18&spacing=4)
+
 """.format(date=formatted_date,
            image="https://content.codecademy.com/courses/learn-cpp/community-challenge/highfive.gif")
 
