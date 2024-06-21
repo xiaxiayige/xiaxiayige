@@ -11,17 +11,20 @@ def update_readme():
     year = now.year
     month = now.month
     day = now.day
+    hour = now.hour
+    minute = now.minute
+    second = now.second
 
     # 格式化输出
-    formatted_date = f"{year}-{month}-{day}"
+    formatted_date = f"{year}-{month}-{day} {hour}:{second}:{second}"
 
     readmeText = """
-# Hello , 今天是 {date} 日 
+# Hello , 今天是 {date} , 加油鸭 🤭
     
 ![img]({image})
     
 """.format(date=formatted_date,
-           image="https://github-readme-stats.vercel.app/api?username=xiaxiayige")
+           image="https://content.codecademy.com/courses/learn-cpp/community-challenge/highfive.gif")
 
     f.write(readmeText)
     f.flush()
